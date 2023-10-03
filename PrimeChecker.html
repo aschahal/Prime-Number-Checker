@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prime Number Checker</title>
+    <meta name="author" content="Your Name">
+    <meta name="cs-username" content="Your CS Username">
+
+    <script type="text/javascript">
+        function checkPrime() {
+            var num = document.getElementById("num").value.trim();
+            var msg = "";
+
+            if (!Number.isInteger(parseFloat(num))) {
+                msg = "Enter a valid integer.";
+            } else {
+                num = parseInt(num);
+
+                if (num < 2) {
+                    msg = num + " is not a prime number.";
+                } else {
+                    var isPrime = true;
+                    for (var i = 2; i <= Math.sqrt(num); i++) {
+                        if (num % i === 0) {
+                            isPrime = false;
+                            break;
+                        }
+                    }
+
+                    if (isPrime) {
+                        msg = num + " is a prime number.";
+                    } else {
+                        msg = num + " is not a prime number.";
+                    }
+                }
+            }
+
+            document.getElementById("result").innerHTML = msg;
+        }
+    </script>
+</head>
+<body>
+    <h1>Prime Number Checker</h1>
+
+    <p>Enter a number to check if it's prime:</p>
+    <input type="text" id="num">
+    <button onclick="checkPrime()">Check</button>
+
+    <p id="result"></p>
+</body>
+</html>
